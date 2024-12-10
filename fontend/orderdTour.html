@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order List</title>
+  <link rel="stylesheet" href="style.css">
   <!-- Bootstrap CSS CDN -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- jQuery CDN -->
@@ -11,42 +13,50 @@
   <!-- Bootstrap JS CDN -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
   <div class="container mt-5">
-    <h1 class="mb-4">Order List</h1>
+    <button id="btn" class="btn-success">অর্ডার দেখুন</button>
+    <h1 class="mb-4">অর্ডার তালিকা</h1>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead class="thead-dark">
           <tr>
-            <th>Place</th>
-            <th>Member</th>
-            <th>Arrival Date</th>
-            <th>Leave Date</th>
-            <th>Comment</th>
-            <th>Actions</th>
+            <th>স্থান</th>
+            <th>সদস্য</th>
+            <th>আগমনের তারিখ</th>
+            <th>প্রস্থানের তারিখ</th>
+            <th>মন্তব্য</th>
+            <th>ক্রিয়াকলাপ</th>
           </tr>
         </thead>
         <tbody id="orderTableBody">
-          <!-- Orders will be dynamically inserted here -->
+          <!-- অর্ডারগুলি এখানে গতিশীলভাবে সন্নিবেশিত হবে -->
         </tbody>
       </table>
     </div>
   </div>
-
+  
+  
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Fetch orders from the server
-      fetchOrders();
+      // fetchOrders();
+      $("#btn").click(function () {
+        fetchOrders();
+        // alert("Data fetched");
+        $("#btn").hide();
+      });
 
       function fetchOrders() {
         $.ajax({
           url: 'http://localhost:3000/api/orders',
           method: 'GET',
           cache: false, // Disable caching
-          success: function(data) {
+          success: function (data) {
             populateTable(data);
           },
-          error: function(error) {
+          error: function (error) {
             console.error('Error fetching orders:', error);
           }
         });
@@ -57,8 +67,9 @@
         tableBody.empty(); // Clear existing rows
 
         orders.forEach(order => {
-          const arrivalDate = new Date(order.ArrivalDate).toISOString().split('T')[0];
-          const leaveDate = new Date(order.LeaveDate).toISOString().split('T')[0];
+         
+    const arrivalDate = new Date(order.ArrivalDate).toLocaleDateString('en-US', { timeZone: 'UTC' });
+    const leaveDate = new Date(order.LeaveDate).toLocaleDateString('en-US', { timeZone: 'UTC' });
 
           const row = `
             <tr>
@@ -77,12 +88,12 @@
         });
 
         // Attach event handlers to buttons
-        $('.confirm-btn').click(function() {
+        $('.confirm-btn').click(function () {
           const orderId = $(this).data('id');
           confirmOrder(orderId);
         });
 
-        $('.cancel-btn').click(function() {
+        $('.cancel-btn').click(function () {
           const orderId = $(this).data('id');
           cancelOrder(orderId);
         });
@@ -102,4 +113,5 @@
     });
   </script>
 </body>
+
 </html>

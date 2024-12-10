@@ -1,21 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('./fonts/SolaimanLipi.ttf') format('woff2');
+      
+  font-weight: normal; /* Optional: specify weight */
+  font-style: normal;  /* Optional: specify style */
+}
 
 :root{
- --orange: #ffa500;
+ --primary: #00ff40;
+ --bg:#009ac9;
+ --theme:#009aaa;
 }
 
 * {
- font-family: 'Nunito', sans-serif;
+ font-family: 'SolaimanLipi', sans-serif;
  margin: 0; padding: 0;
  box-sizing: border-box;
  text-transform: capitalize;
  outline: none; border: none;
  text-decoration: none;
  transition: all .2s linear;
+ text-align: justify;
 }
 
 *::selection {
- background: var(--orange);
+ background: var(--primary);
  color: #fff;
 }
 
@@ -25,7 +35,7 @@ html {
  scroll-padding-top: 6rem;
  scroll-behavior: smooth;
 }
-
+h3{text-align: center;}
 section {
  padding: 2rem 9%;
 }
@@ -38,8 +48,8 @@ section {
 
 .heading span {
  font-size: 3.5rem;
- background: rgba(255, 165, 0, .2);
- color: var(--orange);
+ background: var(--bg);
+ color: var(--primary);
  border-radius: .5rem;
  padding: .2rem 1rem;
 }
@@ -51,23 +61,23 @@ section {
 .btn {
  display: inline-block;
  margin-top: 1rem;
- background: var(--orange);
+ background: var(--primary);
  color: #fff;
  padding: .8rem 3rem;
- border: .2rem solid var(--orange);
+ border: .2rem solid var(--primary);
  cursor: pointer;
  font-size: 1.7rem;
 }
 
 .btn:hover {
- background: rgba(255, 165, 0, .2);
- color: var(--orange);
+ background: var(--bg);
+ color: var(--primary);
 }
 
 header {
  position: fixed;
  top: 0; left: 0; right: 0;
- background: #333;
+ background: var(--theme);;
  z-index: 1000;
  display: flex;
  align-items: center;
@@ -83,7 +93,7 @@ header .logo {
 }
 
 header .logo span {
- color: var(--orange);
+ color: var(--primary);
 }
 
 header .navbar a {
@@ -93,7 +103,7 @@ header .navbar a {
 }
 
 header .navbar a:hover {
- color: var(--orange);
+ color: var(--primary);
 }
 
 header .icons i {
@@ -104,14 +114,14 @@ header .icons i {
 }
 
 header .icons i:hover {
- color: var(--orange);
+ color: var(--primary);
 }
 
 header .search-bar-container {
  position: absolute;
  top: 100%; left: 0; right: 0;
  padding: 1.5rem 2rem;
- background: #333;
+ background: var(--theme);;
  border-top: .1rem solid rgba(255,255,255,.2);
  display: flex;
  align-items: center;
@@ -129,7 +139,7 @@ header .search-bar-container #search-bar {
  width: 100%;
  padding: 1rem;
  text-transform: none;
- color: #333;
+ color: var(--theme);;
  font-size: 1.7rem;
  border-radius: .5rem;
 }
@@ -142,7 +152,7 @@ margin-left: 1.5rem;
 }
 
 header .search-bar-container label:hover {
- color: var(--orange);
+ color: var(--primary);
 }
 
 .login-form-container {
@@ -151,7 +161,7 @@ header .search-bar-container label:hover {
  z-index: 10000;
  min-height: 100vh;
  width: 100%;
- background: rgba(0,0,0,.7);
+ background: var(--theme);
  display: flex;
  align-items: center;
  justify-content: center;
@@ -181,14 +191,14 @@ header .search-bar-container label:hover {
  width: 100%;
  padding: 1rem;
  font-size: 1.7rem;
- color: #333;
+ color: var(--theme);;
  margin: .6rem 0;
  border: .1rem solid rgba(0,0,0,.3);
  text-transform: none;
 }
 
 .login-form-container form .box:focus {
- border-color: var(--orange);
+ border-color: var(--primary);
 }
 
 .login-form-container form #remember {
@@ -211,11 +221,11 @@ header .search-bar-container label:hover {
 }
 
 .login-form-container form p a {
- color: var(--orange);
+ color: var(--primary);
 }
 
 .login-form-container form p a:hover {
- color: #333;
+ color: var(--theme);;
  text-decoration: underline;
 }
 
@@ -278,7 +288,7 @@ header .search-bar-container label:hover {
 .home .controls {
  padding: 1rem;
  border-radius: 5rem;
- background: rgba(0,0,0,.7);
+ background: var(--theme);
  position: relative;
  top: 10rem;
 }
@@ -294,7 +304,7 @@ header .search-bar-container label:hover {
 }
 
 .home .controls .vid-btn.active {
- background: var(--orange);
+ background: var(--primary);
 }
 
 .book .row {
@@ -328,7 +338,7 @@ header .search-bar-container label:hover {
  padding: 1rem;
  border: 1rem solid rgba(0,0,0,.1);
  font-size: 1.7rem;
- color: #333;
+ color: var(--theme);;
  text-transform: none;
 }
 
@@ -372,11 +382,11 @@ header .search-bar-container label:hover {
 
 .packages .box-container .box .content h3 {
   font-size: 2rem;
-  color:#333;
+  color:var(--theme);;
 }
 
 .packages .box-container .box .content h3 i {
-  color:var(--orange);
+  color:var(--primary);
 }
 
 .packages .box-container .box .content p {
@@ -387,12 +397,12 @@ header .search-bar-container label:hover {
 
 .packages .box-container .box .content .stars i {
   font-size: 1.7rem;
-  color: var(--orange);
+  color: var(--primary);
 }
 
 .packages .box-container .box .content .price {
   font-size: 2rem;
-  color: #333;
+  color: var(--theme);;
   padding-top: 1rem;
 }
 
@@ -419,12 +429,12 @@ header .search-bar-container label:hover {
 .services .box-container .box i{
   padding:1rem;
   font-size: 5rem;
-  color:var(--orange);
+  color:var(--primary);
 }
 
 .services .box-container .box h3{
   font-size: 2.5rem;
-  color:#333;
+  color:var(--theme);;
 }
 
 .services .box-container .box p{
@@ -465,7 +475,7 @@ header .search-bar-container label:hover {
   height: 100%;
   width:100%;
   text-align: center;
-  background:rgba(0,0,0,.7);
+  background:var(--theme);
   padding:2rem;
   padding-top: 5rem;
 }
@@ -476,7 +486,7 @@ header .search-bar-container label:hover {
 
 .gallery .box-container .box .content h3{
   font-size: 2.5rem;
-  color:var(--orange);
+  color:var(--primary);
 }
 
 .gallery .box-container .box .content p{
@@ -506,7 +516,7 @@ header .search-bar-container label:hover {
 }
 
 .review .box h3{
-  color:#333;
+  color:var(--theme);;
   font-size: 2.5rem;
 }
 
@@ -517,7 +527,7 @@ header .search-bar-container label:hover {
 }
 
 .review .box .stars i{
-  color:var(--orange);
+  color:var(--primary);
   font-size: 1.7rem;
 }
 
@@ -555,7 +565,7 @@ header .search-bar-container label:hover {
   margin:1rem 0;
   padding:1rem;
   font-size: 1.7rem;
-  color:#333;
+  color:var(--theme);;
   background:#f7f7f7;
   text-transform: none;
 }
@@ -571,7 +581,7 @@ header .search-bar-container label:hover {
 }
 
 .footer{
-  background:#333;
+  background:var(--theme);;
 }
 
 .footer .box-container{
@@ -605,7 +615,7 @@ header .search-bar-container label:hover {
 }
 
 .footer .box-container .box a:hover{
-  color:var(--orange);
+  color:var(--primary);
   text-decoration: underline;
 }
 
@@ -620,7 +630,7 @@ header .search-bar-container label:hover {
 }
 
 .footer .credit span{
-  color:var(--orange);
+  color:var(--primary);
 }
 
 
@@ -669,7 +679,7 @@ header .search-bar-container label:hover {
  header .navbar {
   position: absolute;
   top: 100%; right: 0;left: 0;
-  background: #333;
+  background: var(--theme);;
   border-top: .1rem solid rgba(255,255,255,.2);
   padding: 1rem 2rem;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
